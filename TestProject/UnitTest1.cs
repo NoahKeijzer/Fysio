@@ -13,20 +13,15 @@ namespace TestProject
         public void ShouldRegisterAPersonInRepoWhenRegisterFormIsCorrect()
         {
             // Arrange
-            var sut = new Person
-            {
-                Name = "Name",
-                Emailadres = "Emailadres",
-                Telefoonnummer = 012345678,
-                Geboortedatum = DateTime.Now,
-                Geslacht = Geslacht.Man,
-           };
+            var sut = new Student
+                ("FirstName","LastName", "Emailadres", 012345678, DateTime.Now, Geslacht.Man, "Wachtwoord", 12345678);
+
             // Act
             // Implement method that validates the data and stores in repo
 
 
             //Assert
-
+           
         }
     }
 }

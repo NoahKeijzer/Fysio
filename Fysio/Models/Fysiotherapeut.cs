@@ -9,8 +9,8 @@ namespace Fysio.Models
     {
         public int BIGNummer { get; set; }
 
-        public Fysiotherapeut(string Name, string Emailadres, int Telefoonnummer, DateTime Geboortedatum, Geslacht Geslacht, int BIGNummer)
-            : base(Name, Emailadres, Telefoonnummer, Geboortedatum, Geslacht)
+        public Fysiotherapeut(string FirstName, string LastName, string Emailadres, int Telefoonnummer, DateTime Geboortedatum, Geslacht Geslacht, string Wachtwoord, int BIGNummer)
+            : base(FirstName, LastName, Emailadres, Telefoonnummer, Geboortedatum, Geslacht, Wachtwoord)
         {
             this.BIGNummer = BIGNummer;
         }
