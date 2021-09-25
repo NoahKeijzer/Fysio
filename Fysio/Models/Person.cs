@@ -12,7 +12,9 @@ namespace Fysio.Models
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Please enter your last name")]
         public string LastName { get; set; }
+        
         [Required(ErrorMessage = "Please enter your email address")]
+        [Key]
         public string Emailadres { get; set; }
         [Required(ErrorMessage = "Please enter your phone number")]
         public int Telefoonnummer { get; set; }
