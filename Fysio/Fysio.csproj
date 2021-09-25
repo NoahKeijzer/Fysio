@@ -32,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Shared\DocentRegistrationViewComponent.cshtml" />
+    <Content Remove="Views\Shared\StudentRegistrationViewComponent.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="StyleSheet.css" />
   </ItemGroup>
 
