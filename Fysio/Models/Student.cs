@@ -11,7 +11,7 @@ namespace Fysio.Models
         [Required(ErrorMessage = "Please enter your student number")]
         public int Studentnummer { get; set; }
 
-        public Student(string FirstName, string LastName, string Emailadres, int Telefoonnummer, DateTime Geboortedatum, Geslacht Geslacht, string Wachtwoord, int Studentnummer) 
+        public Student(string FirstName, string LastName, string Emailadres, int Telefoonnummer, DateTime Geboortedatum, Geslacht Geslacht, string Wachtwoord, int Studentnummer)
             : base(FirstName, LastName, Emailadres, Telefoonnummer, Geboortedatum, Geslacht, Wachtwoord)
         {
             this.Studentnummer = Studentnummer;
