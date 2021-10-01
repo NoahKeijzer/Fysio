@@ -17,4 +17,5 @@ namespace Fysio.Models
             this.Studentnumber = Studentnumber;
         }
     }
+
 }
