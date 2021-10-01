@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Fysio.Models
 {
-    public enum Geslacht
+    public enum Gender
     {
-        Man, Vrouw
+        Male, Female
     }
 }

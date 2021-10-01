@@ -14,7 +14,7 @@ namespace TestProject
         {
             // Arrange
             var sut = new Student
-                ("FirstName","LastName", "Emailadres", 012345678, DateTime.Now, Geslacht.Man, "Wachtwoord", 12345678);
+                ("FirstName","LastName", "Emailadres", 012345678, DateTime.Now, Gender.Male, "Wachtwoord", 12345678);
 
             // Act
             // Implement method that validates the data and stores in repo
