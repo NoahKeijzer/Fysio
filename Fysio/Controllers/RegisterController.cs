@@ -12,10 +12,7 @@ namespace Fysio.Controllers
     {
         public IActionResult Register()
         {
-            dynamic mymodel = new ExpandoObject();
-            mymodel.Docent = null;
-            mymodel.Students = null;
-            return View(mymodel);
+            return View();
         }
         [HttpPost]
         public IActionResult RegisterNewPerson(Person person)

@@ -1,5 +1,5 @@
 using Fysio.Data;
-
+using Fysio.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +28,8 @@ namespace Fysio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddScoped<IRepo<Patient>, PatientRepo>();
+            services.AddScoped<IDao, SQLDao>();
             services.AddRazorPages();
 
             services.AddDbContext<FysioDbContext>(options => options.UseSqlServer(
