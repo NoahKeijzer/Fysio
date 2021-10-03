@@ -14,5 +14,9 @@ namespace Fysio.Models
         {
             this.Patiëntnumber = Patiëntnumber;
         }
+        public Patient()
+        {
+
+        }
     }
 }

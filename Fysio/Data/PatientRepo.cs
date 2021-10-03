@@ -17,17 +17,17 @@ namespace Fysio.Data
             return Patients.ToList();
         }
 
-        public Patient Get(int Patientnummer) =>
+        public Patient Get(int Patiëntnumber) =>
             (from patient in Patients
-             where patient.Patiëntnummer == Patientnummer
+             where patient.Patiëntnumber == Patiëntnumber
              select patient).First();
 
-        public void Remove(int id)
+        public void Remove(int Patiëntnumber)
         {
-            Patients.Remove(Get(id));
+            Patients.Remove(Get(Patiëntnumber));
         }
 
-        public void Update(Patient entity, int id)
+        public void Update(Patient entity, int Patiëntnumber)
         {
             throw new System.NotImplementedException();
         }

@@ -16,6 +16,10 @@ namespace Fysio.Models
         {   
             this.StaffNumber = StaffNumber;
         }
+        public Teacher()
+        {
+
+        }
     }
 }
 

@@ -34,6 +34,8 @@
   <ItemGroup>
     <Content Remove="Views\Shared\DocentRegistrationViewComponent.cshtml" />
     <Content Remove="Views\Shared\StudentRegistrationViewComponent.cshtml" />
+    <Content Remove="Views\Shared\_RegisterPartialView.cshtml" />
+    <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -29,14 +29,12 @@ namespace Fysio
         {
             services.AddControllersWithViews();
             services.AddScoped<IRepo<Patient>, PatientRepo>();
-            services.AddScoped<IDao, SQLDao>();
+            services.AddScoped<IRepo<Student>, StudentRepo>();
+            // services.AddScoped<IDao, SQLDao>();
             services.AddRazorPages();
 
             services.AddDbContext<FysioDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("Default")));
-
-            //services.AddDbContext<SecurityDbContext>(options => options.UseSqlServer)
-            //    Configurations.GetCpnectionString("Security");
 
             //services.AddIdentity<IdentityUser, IdentityRole>()
             //    .AddEntityFrameworkStores<SecurityDbContext>().AddDefaultTokenProviders();

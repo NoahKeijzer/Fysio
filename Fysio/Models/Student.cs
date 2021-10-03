@@ -16,6 +16,10 @@ namespace Fysio.Models
         {
             this.Studentnumber = Studentnumber;
         }
+        public Student()
+        {
+
+        }
     }
 
 }

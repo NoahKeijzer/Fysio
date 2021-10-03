@@ -16,10 +16,10 @@ namespace Fysio.Models
         public string DiagnoseCode { get; set; }
         public string DiagnosOmschrijving { get; set; }
         public Student Student { get; set; }
-        public Fysiotherapeut Fysiotherapeut { get; set; }
+        public Physiotherapist Physiotherapist { get; set; }
         public string IntakeGedaanDoor { get; set; }
         public string IntakeOnderSupervisieVan { get; set; }
-        public Fysiotherapeut Hoofdbehandelaar { get; set; }
+        public Physiotherapist Hoofdbehandelaar { get; set; }
         public DateTime DatumAanmelding { get; set; }
         public DateTime DatumOntslag { get; set; }
         public string Opmerkingen { get; set; }

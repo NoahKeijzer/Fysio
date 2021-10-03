@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace Fysio.Models
 {
-    public class Fysiotherapeut : Person
+    public class Physiotherapist : Person
     {
         public int BIGNummer { get; set; }
 
-        public Fysiotherapeut(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, Gender Gender, string Password, int BIGNummer)
+        public Physiotherapist(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, Gender Gender, string Password, int BIGNummer)
             : base(FirstName, LastName, Emailaddress, PhoneNumber, DayOfBirth, Gender, Password)
         {
             this.BIGNummer = BIGNummer;
+        }
+        public Physiotherapist()
+        {
+
         }
     }
 }

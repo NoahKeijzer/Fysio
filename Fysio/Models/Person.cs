@@ -35,5 +35,9 @@ namespace Fysio.Models
             this.Gender = Gender;
             this.Password = Password;
         }
+        public Person()
+        {
+
+        }
     }
 }
