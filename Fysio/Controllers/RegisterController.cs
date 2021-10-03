@@ -15,18 +15,14 @@ namespace Fysio.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult RegisterNewPerson(Person person)
+        public IActionResult RegisterNewPerson(EmployeeViewModel employeeViewModel)
         {
+            if (employeeViewModel.Student != null)
+            {
+
+            }
+            return View();
             // Implement method that validates the data and saves it in the database
-            if (ModelState.IsValid)
-            {
-                Repository.AddResponse(person);
-                return View("Thanks", person);
-            }
-            else
-            {
-                return RedirectToAction("Register"); 
-            }
         }
     }
 }
