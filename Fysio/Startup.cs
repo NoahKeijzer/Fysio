@@ -1,3 +1,4 @@
+using DataAccess.Data;
 using Fysio.Data;
 using Fysio.DataAccess;
 using Fysio.Models;
@@ -31,6 +32,8 @@ namespace Fysio
             services.AddControllersWithViews();
             services.AddScoped<IRepo<Patient>, PatientRepo>();
             services.AddScoped<IRepo<Student>, StudentRepo>();
+            services.AddScoped<ISQLRepo<Student>, SQLStudentRepo>();
+            //services.AddScoped<ISQLRepo<Patient>, SQLPatientRepo>();
             // services.AddScoped<IDao, SQLDao>();
             services.AddRazorPages();
 

@@ -8,6 +8,7 @@ namespace Fysio.Models
 {
     public class Student : Person
     {
+
         [Required(ErrorMessage = "Please enter your student number")]
         public int Studentnumber { get; set; }
 

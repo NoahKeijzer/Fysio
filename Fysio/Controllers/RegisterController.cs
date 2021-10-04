@@ -1,4 +1,4 @@
-﻿using Fysio.Data;
+﻿using DataAccess.Data;
 using Fysio.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,9 +7,9 @@ namespace Fysio.Controllers
     public class RegisterController : Controller
     {
         // private readonly IRepo<Patient> _PatientRepo;
-        private readonly IRepo<Student> _StudentRepo;
+        private readonly ISQLRepo<Student> _StudentRepo;
 
-        public RegisterController(IRepo<Student> StudentRepo)
+        public RegisterController(ISQLRepo<Student> StudentRepo)
         {
             _StudentRepo = StudentRepo;
         }

@@ -7,16 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fysio.Models
 {
-    public abstract class Person : IValidatableObject
+    public class Person /* : IValidatableObject*/
     {
         [Required(ErrorMessage = "Please enter your first name")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Please enter your last name")]
         public string LastName { get; set; }
 
+        [Key]
         [BindProperty, DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Please enter your email address")]
         public string Emailaddress { get; set; }
+
         [BindProperty, DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "Please enter your phone number")]
         public int PhoneNumber { get; set; }
@@ -44,9 +46,9 @@ namespace Fysio.Models
 
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            throw new NotImplementedException();
-        }
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -26,10 +26,10 @@ namespace Fysio.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Physiotherapist>().ToTable("Fysiotherapeut");
+            modelBuilder.Entity<Physiotherapist>().ToTable("Physiotherapist");
             modelBuilder.Entity<Patient>().ToTable("Patient");
             modelBuilder.Entity<Student>().ToTable("Student");
-            modelBuilder.Entity<Teacher>().ToTable("Docent");
+            modelBuilder.Entity<Teacher>().ToTable("Teacher");
         }
     }
 }
