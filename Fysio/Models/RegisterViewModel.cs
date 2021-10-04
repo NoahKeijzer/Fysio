@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Fysio.Models
 {
-    public class EmployeeViewModel
+    public class RegisterViewModel
     {
-        public Teacher Teacher { get; set; }
+        public Physiotherapist Physiotherapist { get; set; }
         public Student Student { get; set; }
 
-        public EmployeeViewModel()
+        public RegisterViewModel()
         {
 
         }

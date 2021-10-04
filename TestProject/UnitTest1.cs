@@ -1,3 +1,4 @@
+using Fysio.Data;
 using Fysio.Models;
 using System;
 using Xunit;
@@ -6,22 +7,21 @@ namespace TestProject
 {
     public class UnitTest1
     {
+        StudentRepo repo = new StudentRepo();
+
         // US_01 Als fysiotherapeut wil ik een nieuwe patiënt in kunnen voeren in het systeem, zodat ik deze
         // patiënt ook kan gaan behandelen.
         
         [Fact]
         public void ShouldRegisterAPersonInRepoWhenRegisterFormIsCorrect()
         {
-            // Arrange
+            // Arrangea
             var sut = new Student
                 ("FirstName","LastName", "Emailadres", 012345678, DateTime.Now, Gender.Male, "Wachtwoord", 12345678);
-
             // Act
-            // Implement method that validates the data and stores in repo
-
-
+            repo.Create(sut);
             //Assert
-           
+            Assert.Equal(sut, repo.Get(12345678));
         }
     }
 }

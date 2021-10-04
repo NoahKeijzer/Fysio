@@ -23,11 +23,11 @@ namespace Fysio.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult RegisterNewPerson(EmployeeViewModel employeeViewModel)
+        public IActionResult RegisterNewPerson(RegisterViewModel registerViewModel)
         {   
-            if (employeeViewModel.Student != null)
+            if (registerViewModel.Student != null)
             {
-                _StudentRepo.Create(employeeViewModel.Student);
+                _StudentRepo.Create(registerViewModel.Student);
                 return View("Thanks");
             }
             return View("Register");

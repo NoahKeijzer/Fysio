@@ -2,7 +2,7 @@
     ViewData["Title"] = "Register Page";
 }
 
-@model Fysio.Models.EmployeeViewModel
+@model Fysio.Models.RegisterViewModel
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -19,7 +19,7 @@
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Physiotherapist</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Student</a>
@@ -27,32 +27,32 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading">Apply as a Employee</h3>
+                    <h3 class="register-heading">Apply as a Physiotherapist</h3>
                     <form method="post" action="RegisterNewPerson">
                         <dasp-action ="Register/RegisterNewPerson" method="post">
                             <div asp-validation-summary="All"></div>
                             <div class="row register-form">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" asp-for="Teacher.FirstName" class="form-control" placeholder="First Name *" value="" />
+                                        <input type="text" asp-for="Physiotherapist.FirstName" class="form-control" placeholder="First Name *" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" asp-for="Teacher.LastName" class="form-control" placeholder="Last Name *" value="" />
+                                        <input type="text" asp-for="Physiotherapist.LastName" class="form-control" placeholder="Last Name *" value="" />
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Password *" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" asp-for="Teacher.Password" class="form-control" placeholder="Confirm Password *" value="" />
+                                        <input type="password" asp-for="Physiotherapist.Password" class="form-control" placeholder="Confirm Password *" value="" />
                                     </div>
                                     <div class="form-group">
                                         <div class="maxl">
                                             <label class="radio inline">
-                                                <input type="radio" name="gender" asp-for="Teacher.Gender" value="Male">
+                                                <input type="radio" name="gender" asp-for="Physiotherapist.Gender" value="Male">
                                                 <span> Male </span>
                                             </label>
                                             <label class="radio inline">
-                                                <input type="radio" name="gender" asp-for="Teacher.Gender" value="Female">
+                                                <input type="radio" name="gender" asp-for="Physiotherapist.Gender" value="Female">
                                                 <span>Female </span>
                                             </label>
                                         </div>
@@ -60,16 +60,16 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" asp-for="Teacher.Emailaddress" placeholder="Your Email *" value="" />
+                                        <input type="email" class="form-control" asp-for="Physiotherapist.Emailaddress" placeholder="Your Email *" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" minlength="10" maxlength="10" asp-for="Teacher.PhoneNumber" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
+                                        <input type="number" class="form-control" minlength="10" maxlength="10" asp-for="Physiotherapist.PhoneNumber" name="txtEmpPhone" placeholder="Your Phone *" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" asp-for="Teacher.DayOfBirth" placeholder="Your date of birth *" value="" />
+                                        <input class="form-control" asp-for="Physiotherapist.DayOfBirth" placeholder="Your date of birth *" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" asp-for="Teacher.StaffNumber" placeholder="Your staff number *" value="" />
+                                        <input class="form-control" asp-for="Physiotherapist.BIGNummer" placeholder="Your BIG number *" value="" />
                                     </div>
                                     <input type="submit" class="btnRegister" value="Register" method="post" action="/RegisterNewPerson" />
                                 </div>
