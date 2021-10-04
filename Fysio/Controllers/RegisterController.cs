@@ -1,11 +1,6 @@
 ﻿using Fysio.Data;
 using Fysio.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fysio.Controllers
 {
@@ -25,7 +20,7 @@ namespace Fysio.Controllers
         [HttpPost]
         public IActionResult RegisterNewPerson(EmployeeViewModel employeeViewModel)
         {   
-            if (employeeViewModel.Student != null)
+            if (employeeViewModel.Student != null && ModelState.IsValid)
             {
                 _StudentRepo.Create(employeeViewModel.Student);
                 return View("Thanks");

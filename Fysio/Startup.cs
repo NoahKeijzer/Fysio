@@ -1,4 +1,5 @@
 using Fysio.Data;
+using Fysio.DataAccess;
 using Fysio.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
