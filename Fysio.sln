@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fysio", "Fysio\Fysio.csproj", "{8F5012FA-6C83-40C3-B8BB-6A94E4A30F0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Fysio\Presentation.csproj", "{8F5012FA-6C83-40C3-B8BB-6A94E4A30F0C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{011B0142-CB4F-41BB-ABD9-5B3677B81867} = {011B0142-CB4F-41BB-ABD9-5B3677B81867}
 		{F1E9686B-C892-4635-B245-C114FA6EF6C2} = {F1E9686B-C892-4635-B245-C114FA6EF6C2}
@@ -15,12 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "TestProject\Test.cs
 		{F1E9686B-C892-4635-B245-C114FA6EF6C2} = {F1E9686B-C892-4635-B245-C114FA6EF6C2}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F1E9686B-C892-4635-B245-C114FA6EF6C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F1E9686B-C892-4635-B245-C114FA6EF6C2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{011B0142-CB4F-41BB-ABD9-5B3677B81867} = {011B0142-CB4F-41BB-ABD9-5B3677B81867}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{011B0142-CB4F-41BB-ABD9-5B3677B81867}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{011B0142-CB4F-41BB-ABD9-5B3677B81867}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

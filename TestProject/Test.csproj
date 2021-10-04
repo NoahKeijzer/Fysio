@@ -27,7 +27,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fysio\Fysio.csproj" />
+    <ProjectReference Include="..\Fysio\Presentation.csproj" />
   </ItemGroup>
 
 </Project>
