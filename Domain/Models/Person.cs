@@ -25,12 +25,13 @@ namespace Fysio.Models
         [BindProperty, DataType(DataType.Date)]
         [Required(ErrorMessage = "Please enter your birthday")]
         public DateTime DayOfBirth { get; set; }
-        [Required(ErrorMessage = "Please select your gender")]
-        public Gender Gender { get; set; }
+
+        [BindProperty, Required(ErrorMessage = "Please select your gender")]
+        public string Gender { get; set; }
         [Required(ErrorMessage = "Please select your password")]
         public string Password {  get; set; }
 
-        public Person(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, Gender Gender, string Password)
+        public Person(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, string Gender, string Password)
         {
 
             this.FirstName = FirstName;

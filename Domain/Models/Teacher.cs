@@ -11,7 +11,7 @@ namespace Fysio.Models
         [Required(ErrorMessage = "Please enter your personeels nummer")]
         public int StaffNumber { get; set; }
 
-        public Teacher(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, Gender Gender, string Wachtwoord, int StaffNumber)
+        public Teacher(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, string Gender, string Wachtwoord, int StaffNumber)
             : base(FirstName, LastName, Emailaddress, PhoneNumber, DayOfBirth, Gender, Wachtwoord)
         {   
             this.StaffNumber = StaffNumber;

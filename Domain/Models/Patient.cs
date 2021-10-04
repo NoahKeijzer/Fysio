@@ -11,7 +11,7 @@ namespace Fysio.Models
         [Required(ErrorMessage = "Please select your patiënt number")]
         public int Patiëntnumber { get; set; }
 
-        public Patient(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime Geboortedatum, Gender Gender, string Password, int Patiëntnumber)
+        public Patient(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime Geboortedatum, string Gender, string Password, int Patiëntnumber)
             : base(FirstName, LastName, Emailaddress, PhoneNumber, Geboortedatum, Gender, Password)
         {
             this.Patiëntnumber = Patiëntnumber;

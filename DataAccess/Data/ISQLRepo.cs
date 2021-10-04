@@ -11,7 +11,7 @@ namespace DataAccess.Data
         public List<T> Get();
         public T Get(int id);
         public void Remove(int id);
-        public Task Create(T entity);
+        public void Create(T entity);
         public void Update(T entity, int id);
 
     }

@@ -15,7 +15,7 @@ namespace Fysio.DataAccess
             _dbContext = dbContext;
         }
 
-        public async Task Create(Student entity)
+        public void Create(Student entity)
         {
             _dbContext.Add(entity);
             _dbContext.SaveChanges();

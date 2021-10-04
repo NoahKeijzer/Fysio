@@ -10,7 +10,7 @@ namespace Fysio.Models
     {
         public int BIGNummer { get; set; }
 
-        public Physiotherapist(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, Gender Gender, string Password, int BIGNummer)
+        public Physiotherapist(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, string Gender, string Password, int BIGNummer)
             : base(FirstName, LastName, Emailaddress, PhoneNumber, DayOfBirth, Gender, Password)
         {
             this.BIGNummer = BIGNummer;
