@@ -47,6 +47,6 @@ namespace Fysio.Models
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             throw new NotImplementedException();
-        
+        }
     }
 }

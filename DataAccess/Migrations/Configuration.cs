@@ -1,18 +1,17 @@
 ﻿namespace Fysio.Migrations
 {
-    using System;
-    using System.Data.Entity;
+    using Microsoft.EntityFrameworkCore;
+    using Fysio.DataAccess;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Fysio.Data_Access.FysioDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<FysioDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Fysio.Data_Access.FysioDbContext context)
+        protected override void Seed(FysioDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -5,22 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\**" />
+    <Compile Remove="Models\**" />
     <Compile Remove="NewFolder1\**" />
     <Compile Remove="NewFolder2\**" />
     <Compile Remove="NewFolder3\**" />
     <Compile Remove="NewFolder\**" />
-    <Content Remove="Migrations\**" />
+    <Content Remove="Models\**" />
     <Content Remove="NewFolder1\**" />
     <Content Remove="NewFolder2\**" />
     <Content Remove="NewFolder3\**" />
     <Content Remove="NewFolder\**" />
-    <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="Models\**" />
     <EmbeddedResource Remove="NewFolder1\**" />
     <EmbeddedResource Remove="NewFolder2\**" />
     <EmbeddedResource Remove="NewFolder3\**" />
     <EmbeddedResource Remove="NewFolder\**" />
-    <None Remove="Migrations\**" />
+    <None Remove="Models\**" />
     <None Remove="NewFolder1\**" />
     <None Remove="NewFolder2\**" />
     <None Remove="NewFolder3\**" />
@@ -43,16 +43,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\20210925091114_InitialCreate.cs" />
-    <Compile Include="Migrations\20210925091114_InitialCreate.Designer.cs" />
-    <Compile Include="Migrations\20210925095006_AddDocenten.cs" />
-    <Compile Include="Migrations\20210925095006_AddDocenten.Designer.cs" />
-    <Compile Include="Migrations\20210925100119_ToTableOfClassesWithInheritance.cs" />
-    <Compile Include="Migrations\20210925100119_ToTableOfClassesWithInheritance.Designer.cs" />
-    <Compile Include="Migrations\FysioDbContextModelSnapshot.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.10">
       <PrivateAssets>all</PrivateAssets>
@@ -64,6 +54,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

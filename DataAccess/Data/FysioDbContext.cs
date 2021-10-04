@@ -1,7 +1,8 @@
-﻿using Fysio.Models;
+﻿
+using Fysio.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fysio.Data
+namespace Fysio.DataAccess
 {
     public class FysioDbContext : DbContext
     {
