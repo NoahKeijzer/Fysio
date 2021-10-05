@@ -9,6 +9,7 @@ namespace Fysio.Models
     {
         public Physiotherapist Physiotherapist { get; set; }
         public Student Student { get; set; }
+        public Patient Patient {  get; set; }
 
         public RegisterViewModel()
         {
