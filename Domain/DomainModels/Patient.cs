@@ -29,5 +29,9 @@ namespace Fysio.Models
                 yield return new ValidationResult("De patient is jonger dan 16 jaar en mag niet geregistreed worden", new[] { nameof(DayOfBirth) });
             }
         }
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
     }
 }
