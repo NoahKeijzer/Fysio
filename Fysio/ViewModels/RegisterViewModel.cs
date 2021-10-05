@@ -15,5 +15,17 @@ namespace Fysio.Models
         {
 
         }
+
+        internal object GetModelObject()
+        {
+            if (Physiotherapist != null)
+                return Physiotherapist.GetType();
+            else if (Student != null)
+                return Student.GetType();
+            else if (Patient != null)
+                return Patient.GetType();
+            else
+                return null;
+        }
     }
 }
