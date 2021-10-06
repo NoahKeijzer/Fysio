@@ -1,6 +1,6 @@
 using System;
 
-namespace Fysio.Models
+namespace Presentation.ViewModels
 {
     public class ErrorViewModel
     {

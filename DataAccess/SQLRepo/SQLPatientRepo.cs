@@ -1,10 +1,9 @@
 ﻿using DataAccess.Data;
-using Fysio.DataAccess;
-using Fysio.Models;
+using Domain.DomainModels;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fysio.Data
+namespace DataAccess.SQLRepo
 {
     public class SQLPatientRepo : ISQLRepo<Patient>
     {
@@ -22,7 +21,7 @@ namespace Fysio.Data
             _dbContext.SaveChanges();
         }
 
-        public List<Patient> Get()
+        public IEnumerable<Patient> Get()
         {
             return _dbContext.Patients.ToList();
         }

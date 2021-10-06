@@ -1,8 +1,9 @@
 ﻿using DataAccess.Data;
-using Fysio.Models;
+using Domain.DomainModels;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ViewModels;
 
-namespace Fysio.Controllers
+namespace Presentation.Controllers
 {
     public class RegisterController : Controller
     {
@@ -21,26 +22,41 @@ namespace Fysio.Controllers
         {
             return View();
         }
+
+        public IActionResult RegisterBehandeling()
+        {
+            return View();
+        }
         [HttpPost]
-        public IActionResult RegisterNewPerson(RegisterViewModel registerViewModel)
+        public IActionResult RegisterNewStudent(RegisterViewModel registerViewModel)
         {
             if (registerViewModel.Student != null)
             {
                 _StudentRepo.Create(registerViewModel.Student);
                 return View("Thanks");
-            }
-            else if (registerViewModel.Patient != null)
+            }          
+            return View("Register");
+            // Implement method that validates the data and saves it in the database
+        }
+        [HttpPost]
+        public IActionResult RegisterNewPatient(RegisterViewModel registerViewModel)
+        {
+            if (registerViewModel.Patient != null)
             {
                 _PatientRepo.Create(registerViewModel.Patient);
                 return View("Thanks");
             }
-            else if (registerViewModel.Physiotherapist != null)
+            return View("Register");
+        }
+        [HttpPost]
+        public IActionResult RegisterNewPhysiotherapist(RegisterViewModel registerViewModel)
+        {
+            if (registerViewModel.Physiotherapist != null)
             {
                 _PhysiotherapistRepo.Create(registerViewModel.Physiotherapist);
                 return View("Thanks");
             }
             return View("Register");
-            // Implement method that validates the data and saves it in the database
         }
     }
 }

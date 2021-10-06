@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace Fysio.Models
+namespace Domain.DomainModels
 {
     public class Person /* : IValidatableObject*/
     {
@@ -13,7 +14,6 @@ namespace Fysio.Models
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Please enter your last name")]
         public string LastName { get; set; }
-
         [Key]
         [BindProperty, DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Please enter your email address")]
@@ -28,10 +28,8 @@ namespace Fysio.Models
 
         [BindProperty, Required(ErrorMessage = "Please select your gender")]
         public string Gender { get; set; }
-        [Required(ErrorMessage = "Please select your password")]
-        public string Password {  get; set; }
 
-        public Person(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, string Gender, string Password)
+        public Person(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime DayOfBirth, string Gender)
         {
 
             this.FirstName = FirstName;
@@ -40,7 +38,6 @@ namespace Fysio.Models
             this.PhoneNumber = PhoneNumber;
             this.DayOfBirth = DayOfBirth;
             this.Gender = Gender;
-            this.Password = Password;
         }
         public Person()
         {

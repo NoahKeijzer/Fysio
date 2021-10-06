@@ -1,5 +1,5 @@
-﻿using Fysio.DataAccess;
-using Fysio.Models;
+﻿using DataAccess.Data;
+using Domain.DomainModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.SQLRepo
 {
-    public class SQLPhysiotherapistRepo
+    public class SQLPhysiotherapistRepo : ISQLRepo<Physiotherapist>
     {
         private FysioDbContext _dbContext;
 
@@ -23,7 +23,7 @@ namespace DataAccess.SQLRepo
             _dbContext.SaveChanges();
         }
 
-        public List<Physiotherapist> Get()
+        public IEnumerable<Physiotherapist> Get()
         {
             return _dbContext.Physiotherapists.ToList();
         }
@@ -37,10 +37,9 @@ namespace DataAccess.SQLRepo
         {
             _dbContext.Physiotherapists.Remove(Get(BIGNummer));
         }
-
-        public void Update(Student entity, int BIGNummer)
+        public void Update(Physiotherapist entity, int id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

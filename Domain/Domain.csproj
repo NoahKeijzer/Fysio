@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DomainModels\ErrorViewModel.cs" />
+    <Compile Remove="DomainModels\Repository.cs" />
     <Compile Remove="Models\Repository.cs" />
   </ItemGroup>
 

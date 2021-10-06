@@ -28,8 +28,8 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Apply as a Physiotherapist</h3>
-                    <form method="post" action="RegisterNewPerson">
-                        <dasp-action ="Register/RegisterNewPerson" method="post">
+                    <form method="post" action="RegisterNewPhysiotherapist">
+                        <dasp-action ="Register/RegisterNewPhysiotherapist" method="post">
                             <div asp-validation-summary="All"></div>
                             <div class="row register-form">
                                 <div class="col-md-6">
@@ -71,7 +71,7 @@
                                     <div class="form-group">
                                         <input class="form-control" asp-for="Physiotherapist.BIGNummer" placeholder="Your BIG number *" value="" />
                                     </div>
-                                    <input type="submit" class="btnRegister" value="Register" method="post" action="/RegisterNewPerson" />
+                                    <input type="submit" class="btnRegister" value="Register" method="post" action="/RegisterNewPhysioterapist" />
                                 </div>
                             </div>
                     </form>
@@ -92,20 +92,15 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Password *" value="" />
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" asp-for="Student.Password" class="form-control" placeholder="Confirm Password *" value="" />
+                                    <div class="form-group form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-radio-input" value="True" type="radio" asp-for="Student.Gender" /> Male
+                                        </label>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="maxl">
-                                            <label class="radio inline">
-                                                <input type="radio" name="gender" asp-for="Student.Gender" value= "">
-                                                <span> Male </span>
-                                            </label>
-                                            <label class="radio inline">
-                                                <input type="radio" name="gender" asp-for="Student.Gender" value= "">
-                                                <span>Female </span>
-                                            </label>
-                                        </div>
+                                    <div class="form-group form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" value="False" type="radio" asp-for="Student.Gender" /> Female
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -113,15 +108,15 @@
                                         <input type="email" class="form-control" asp-for="Student.Emailaddress" placeholder="Your Email *" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" asp-for="Student.PhoneNumber"  placeholder="Your Phone *" value="" />
+                                        <input type="number" class="form-control" asp-for="Student.PhoneNumber" placeholder="Your Phone *" value="" />
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" asp-for="Student.DayOfBirth" placeholder="Your date of birth *" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input  type="number" class="form-control" asp-for="Student.Studentnumber" placeholder="Your student number *" value="" />
+                                        <input type="number" class="form-control" asp-for="Student.Studentnumber" placeholder="Your student number *" value="" />
                                     </div>
-                                    <input type="submit" class="btnRegister" value="Register" method="post" action="/RegisterNewPerson" />
+                                    <input type="submit" class="btnRegister" value="Register" method="post" action="/RegisterNewStudent" />
                                 </div>
                             </div>
                     </form>

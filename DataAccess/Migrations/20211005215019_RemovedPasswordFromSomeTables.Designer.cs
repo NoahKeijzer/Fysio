@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fysio.Migrations
 {
     [DbContext(typeof(FysioDbContext))]
-    [Migration("20211004185650_ChangedNameOfTablesFromNLtoEN")]
-    partial class ChangedNameOfTablesFromNLtoEN
+    [Migration("20211005215019_RemovedPasswordFromSomeTables")]
+    partial class RemovedPasswordFromSomeTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Fysio.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Fysio.Models.Patiëntdossier", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,9 +64,6 @@ namespace Fysio.Migrations
                     b.Property<string>("Opmerkingen")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PatientEmailaddress")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("PhysiotherapistEmailaddress")
                         .HasColumnType("nvarchar(450)");
 
@@ -77,8 +74,6 @@ namespace Fysio.Migrations
 
                     b.HasIndex("HoofdbehandelaarEmailaddress");
 
-                    b.HasIndex("PatientEmailaddress");
-
                     b.HasIndex("PhysiotherapistEmailaddress");
 
                     b.HasIndex("StudentEmailaddress");
@@ -86,7 +81,7 @@ namespace Fysio.Migrations
                     b.ToTable("Patiëntdossiers");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Person", b =>
+            modelBuilder.Entity("Domain.DomainModels.Person", b =>
                 {
                     b.Property<string>("Emailaddress")
                         .HasColumnType("nvarchar(450)");
@@ -98,14 +93,11 @@ namespace Fysio.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -117,29 +109,36 @@ namespace Fysio.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Patient", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patient", b =>
                 {
-                    b.HasBaseType("Fysio.Models.Person");
+                    b.HasBaseType("Domain.DomainModels.Person");
 
                     b.Property<int>("Patiëntnumber")
                         .HasColumnType("int");
 
+                    b.HasIndex("Patiëntnumber")
+                        .IsUnique()
+                        .HasFilter("[Patiëntnumber] IS NOT NULL");
+
                     b.ToTable("Patient");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Physiotherapist", b =>
+            modelBuilder.Entity("Domain.DomainModels.Physiotherapist", b =>
                 {
-                    b.HasBaseType("Fysio.Models.Person");
+                    b.HasBaseType("Domain.DomainModels.Person");
 
                     b.Property<int>("BIGNummer")
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.ToTable("Physiotherapist");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Student", b =>
+            modelBuilder.Entity("Domain.DomainModels.Student", b =>
                 {
-                    b.HasBaseType("Fysio.Models.Person");
+                    b.HasBaseType("Domain.DomainModels.Person");
 
                     b.Property<int>("Studentnumber")
                         .HasColumnType("int");
@@ -147,9 +146,9 @@ namespace Fysio.Migrations
                     b.ToTable("Student");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Teacher", b =>
+            modelBuilder.Entity("Domain.DomainModels.Teacher", b =>
                 {
-                    b.HasBaseType("Fysio.Models.Person");
+                    b.HasBaseType("Domain.DomainModels.Person");
 
                     b.Property<int>("StaffNumber")
                         .HasColumnType("int");
@@ -157,67 +156,74 @@ namespace Fysio.Migrations
                     b.ToTable("Teacher");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Patiëntdossier", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
                 {
-                    b.HasOne("Fysio.Models.Physiotherapist", "Hoofdbehandelaar")
+                    b.HasOne("Domain.DomainModels.Physiotherapist", "Hoofdbehandelaar")
                         .WithMany()
                         .HasForeignKey("HoofdbehandelaarEmailaddress");
 
-                    b.HasOne("Fysio.Models.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientEmailaddress");
-
-                    b.HasOne("Fysio.Models.Physiotherapist", "Physiotherapist")
+                    b.HasOne("Domain.DomainModels.Physiotherapist", "Physiotherapist")
                         .WithMany()
                         .HasForeignKey("PhysiotherapistEmailaddress");
 
-                    b.HasOne("Fysio.Models.Student", "Student")
+                    b.HasOne("Domain.DomainModels.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentEmailaddress");
 
                     b.Navigation("Hoofdbehandelaar");
-
-                    b.Navigation("Patient");
 
                     b.Navigation("Physiotherapist");
 
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Patient", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patient", b =>
                 {
-                    b.HasOne("Fysio.Models.Person", null)
+                    b.HasOne("Domain.DomainModels.Person", null)
                         .WithOne()
-                        .HasForeignKey("Fysio.Models.Patient", "Emailaddress")
+                        .HasForeignKey("Domain.DomainModels.Patient", "Emailaddress")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.DomainModels.Patiëntdossier", "Patiëntdossier")
+                        .WithOne("Patient")
+                        .HasForeignKey("Domain.DomainModels.Patient", "Patiëntnumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patiëntdossier");
+                });
+
+            modelBuilder.Entity("Domain.DomainModels.Physiotherapist", b =>
+                {
+                    b.HasOne("Domain.DomainModels.Person", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.DomainModels.Physiotherapist", "Emailaddress")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Fysio.Models.Physiotherapist", b =>
+            modelBuilder.Entity("Domain.DomainModels.Student", b =>
                 {
-                    b.HasOne("Fysio.Models.Person", null)
+                    b.HasOne("Domain.DomainModels.Person", null)
                         .WithOne()
-                        .HasForeignKey("Fysio.Models.Physiotherapist", "Emailaddress")
+                        .HasForeignKey("Domain.DomainModels.Student", "Emailaddress")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Fysio.Models.Student", b =>
+            modelBuilder.Entity("Domain.DomainModels.Teacher", b =>
                 {
-                    b.HasOne("Fysio.Models.Person", null)
+                    b.HasOne("Domain.DomainModels.Person", null)
                         .WithOne()
-                        .HasForeignKey("Fysio.Models.Student", "Emailaddress")
+                        .HasForeignKey("Domain.DomainModels.Teacher", "Emailaddress")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Fysio.Models.Teacher", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
                 {
-                    b.HasOne("Fysio.Models.Person", null)
-                        .WithOne()
-                        .HasForeignKey("Fysio.Models.Teacher", "Emailaddress")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
+                    b.Navigation("Patient");
                 });
 #pragma warning restore 612, 618
         }

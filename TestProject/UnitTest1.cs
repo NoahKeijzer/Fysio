@@ -1,9 +1,9 @@
-using Fysio.Data;
-using Fysio.Models;
+using DataAccess.LocalRepo;
+using Domain.DomainModels;
 using System;
 using Xunit;
 
-namespace TestProject
+namespace Test
 {
     public class UnitTest1
     {
@@ -17,7 +17,7 @@ namespace TestProject
         {
             // Arrangea
             var sut = new Student
-                ("FirstName", "LastName", "Emailadres", 012345678, DateTime.Now, "Male", "Wachtwoord", 12345678);
+                ("FirstName", "LastName", "Emailadres", 012345678, DateTime.Now, "Male", 12345678);
             // Act
             repo.Create(sut);
             //Assert

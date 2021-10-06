@@ -1,6 +1,6 @@
 using System;
 
-namespace Fysio.Models
+namespace Domain.DomainModels
 {
     public class ErrorViewModel
     {

@@ -8,7 +8,7 @@ namespace DataAccess.Data
 {
     public interface ISQLRepo<T>
     {
-        public List<T> Get();
+        public IEnumerable<T> Get();
         public T Get(int id);
         public void Remove(int id);
         public void Create(T entity);

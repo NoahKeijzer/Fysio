@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Fysio.Data
+namespace DataAccess.Data
 {
     public interface IRepo<T>
     {

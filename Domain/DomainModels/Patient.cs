@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Fysio.Models
+namespace Domain.DomainModels
 {
     public class Patient : Person
     {
         private DateTime minumAge = DateTime.Now.AddDays(-16);
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessage = "Please select your patiënt number")]
         public int Patiëntnumber { get; set; }
+        public Patiëntdossier Patiëntdossier { get; set; }
 
-        public Patient(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime Geboortedatum, string Gender, string Password, int Patiëntnumber)
-            : base(FirstName, LastName, Emailaddress, PhoneNumber, Geboortedatum, Gender, Password)
+        public Patient(string FirstName, string LastName, string Emailaddress, int PhoneNumber, DateTime Geboortedatum, string Gender, int Patiëntnumber)
+            : base(FirstName, LastName, Emailaddress, PhoneNumber, Geboortedatum, Gender)
         {
             this.Patiëntnumber = Patiëntnumber;
         }

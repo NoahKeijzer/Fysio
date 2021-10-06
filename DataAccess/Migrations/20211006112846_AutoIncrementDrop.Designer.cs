@@ -4,70 +4,22 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Fysio.Migrations
 {
     [DbContext(typeof(FysioDbContext))]
-    partial class FysioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211006112846_AutoIncrementDrop")]
+    partial class AutoIncrementDrop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Behandelingen")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Behandelplan")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DatumAanmelding")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DatumOntslag")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DiagnosOmschrijving")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DiagnoseCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HoofdbehandelaarEmailaddress")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("IntakeGedaanDoor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IntakeOnderSupervisieVan")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Klachten")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Opmerkingen")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HoofdbehandelaarEmailaddress");
-
-                    b.ToTable("Patiëntdossiers");
-                });
 
             modelBuilder.Entity("Domain.DomainModels.Person", b =>
                 {
@@ -95,23 +47,6 @@ namespace Fysio.Migrations
                     b.HasKey("Emailaddress");
 
                     b.ToTable("Persons");
-                });
-
-            modelBuilder.Entity("Domain.DomainModels.Patient", b =>
-                {
-                    b.HasBaseType("Domain.DomainModels.Person");
-
-                    b.Property<int?>("PatiëntdossierId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Patiëntnumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.HasIndex("PatiëntdossierId");
-
-                    b.ToTable("Patient");
                 });
 
             modelBuilder.Entity("Domain.DomainModels.Physiotherapist", b =>
@@ -145,30 +80,6 @@ namespace Fysio.Migrations
                         .HasColumnType("int");
 
                     b.ToTable("Teacher");
-                });
-
-            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
-                {
-                    b.HasOne("Domain.DomainModels.Physiotherapist", "Hoofdbehandelaar")
-                        .WithMany()
-                        .HasForeignKey("HoofdbehandelaarEmailaddress");
-
-                    b.Navigation("Hoofdbehandelaar");
-                });
-
-            modelBuilder.Entity("Domain.DomainModels.Patient", b =>
-                {
-                    b.HasOne("Domain.DomainModels.Person", null)
-                        .WithOne()
-                        .HasForeignKey("Domain.DomainModels.Patient", "Emailaddress")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.DomainModels.Patiëntdossier", "Patiëntdossier")
-                        .WithMany()
-                        .HasForeignKey("PatiëntdossierId");
-
-                    b.Navigation("Patiëntdossier");
                 });
 
             modelBuilder.Entity("Domain.DomainModels.Physiotherapist", b =>

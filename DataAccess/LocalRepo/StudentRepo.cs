@@ -1,8 +1,9 @@
-﻿using Fysio.Models;
+﻿using DataAccess.Data;
+using Domain.DomainModels;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fysio.Data
+namespace DataAccess.LocalRepo
 {
     public class StudentRepo : IRepo<Student>
     {

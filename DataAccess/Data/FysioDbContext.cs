@@ -1,8 +1,7 @@
-﻿
-using Fysio.Models;
+﻿using Domain.DomainModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fysio.DataAccess
+namespace DataAccess.Data
 {
     public class FysioDbContext : DbContext
     {
@@ -30,6 +29,20 @@ namespace Fysio.DataAccess
             modelBuilder.Entity<Patient>().ToTable("Patient");
             modelBuilder.Entity<Student>().ToTable("Student");
             modelBuilder.Entity<Teacher>().ToTable("Teacher");
+
+            //modelBuilder.Entity<Patiëntdossier>()
+            //    .ToTable("Patiëntdossier")
+            //    .HasKey(p => p.Patient);
+                    
+
+            //modelBuilder.Entity<Patient>()
+            //    .HasOne(p => p.Patiëntdossier)
+            //    .WithOne(pd => pd.Patient)
+            //    .HasForeignKey<Patient>(p => p.Emailaddress)
+            //    .IsRequired(false)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+
         }
     }
 }

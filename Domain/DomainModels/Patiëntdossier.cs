@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Fysio.Models
+namespace Domain.DomainModels
 {
     public class Patiëntdossier
     {
+        [NotMapped]
+        public Patient Patient { get; set; }
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-        public Patient Patient { get; set; }
         public string Klachten { get; set; }
         public string DiagnoseCode { get; set; }
         public string DiagnosOmschrijving { get; set; }
-        public Student Student { get; set; }
-        public Physiotherapist Physiotherapist { get; set; }
         public string IntakeGedaanDoor { get; set; }
         public string IntakeOnderSupervisieVan { get; set; }
         public Physiotherapist Hoofdbehandelaar { get; set; }

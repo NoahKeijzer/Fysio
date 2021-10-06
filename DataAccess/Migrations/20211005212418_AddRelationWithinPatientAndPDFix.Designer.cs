@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fysio.Migrations
 {
     [DbContext(typeof(FysioDbContext))]
-    [Migration("20210925100119_ToTableOfClassesWithInheritance")]
-    partial class ToTableOfClassesWithInheritance
+    [Migration("20211005212418_AddRelationWithinPatientAndPDFix")]
+    partial class AddRelationWithinPatientAndPDFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Fysio.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Fysio.Models.Patiëntdossier", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,10 +46,7 @@ namespace Fysio.Migrations
                     b.Property<string>("DiagnoseCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FysiotherapeutEmailadres")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("HoofdbehandelaarEmailadres")
+                    b.Property<string>("HoofdbehandelaarEmailaddress")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("IntakeGedaanDoor")
@@ -67,184 +64,167 @@ namespace Fysio.Migrations
                     b.Property<string>("Opmerkingen")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PatientEmailadres")
+                    b.Property<string>("PhysiotherapistEmailaddress")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("StudentEmailadres")
+                    b.Property<string>("StudentEmailaddress")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FysiotherapeutEmailadres");
+                    b.HasIndex("HoofdbehandelaarEmailaddress");
 
-                    b.HasIndex("HoofdbehandelaarEmailadres");
+                    b.HasIndex("PhysiotherapistEmailaddress");
 
-                    b.HasIndex("PatientEmailadres");
-
-                    b.HasIndex("StudentEmailadres");
+                    b.HasIndex("StudentEmailaddress");
 
                     b.ToTable("Patiëntdossiers");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Person", b =>
+            modelBuilder.Entity("Domain.DomainModels.Person", b =>
                 {
-                    b.Property<string>("Emailadres")
+                    b.Property<string>("Emailaddress")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DayOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Geboortedatum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Geslacht")
-                        .HasColumnType("int");
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Telefoonnummer")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Wachtwoord")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Emailadres");
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("Emailaddress");
 
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Docent", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patient", b =>
                 {
-                    b.HasBaseType("Fysio.Models.Person");
+                    b.HasBaseType("Domain.DomainModels.Person");
 
-                    b.Property<int>("Personeelsnummer")
+                    b.Property<int>("Patiëntnumber")
                         .HasColumnType("int");
 
-                    b.ToTable("Docent");
-                });
-
-            modelBuilder.Entity("Fysio.Models.Fysiotherapeut", b =>
-                {
-                    b.HasBaseType("Fysio.Models.Person");
-
-                    b.Property<int>("BIGNummer")
-                        .HasColumnType("int");
-
-                    b.Property<string>("docentEmailadres")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("studentEmailadres")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasIndex("docentEmailadres");
-
-                    b.HasIndex("studentEmailadres");
-
-                    b.ToTable("Fysiotherapeut");
-                });
-
-            modelBuilder.Entity("Fysio.Models.Patient", b =>
-                {
-                    b.HasBaseType("Fysio.Models.Person");
-
-                    b.Property<int>("Patiëntnummer")
-                        .HasColumnType("int");
+                    b.HasIndex("Patiëntnumber")
+                        .IsUnique()
+                        .HasFilter("[Patiëntnumber] IS NOT NULL");
 
                     b.ToTable("Patient");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Student", b =>
+            modelBuilder.Entity("Domain.DomainModels.Physiotherapist", b =>
                 {
-                    b.HasBaseType("Fysio.Models.Person");
+                    b.HasBaseType("Domain.DomainModels.Person");
 
-                    b.Property<int>("Studentnummer")
+                    b.Property<int>("BIGNummer")
+                        .HasColumnType("int");
+
+                    b.ToTable("Physiotherapist");
+                });
+
+            modelBuilder.Entity("Domain.DomainModels.Student", b =>
+                {
+                    b.HasBaseType("Domain.DomainModels.Person");
+
+                    b.Property<int>("Studentnumber")
                         .HasColumnType("int");
 
                     b.ToTable("Student");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Patiëntdossier", b =>
+            modelBuilder.Entity("Domain.DomainModels.Teacher", b =>
                 {
-                    b.HasOne("Fysio.Models.Fysiotherapeut", "Fysiotherapeut")
+                    b.HasBaseType("Domain.DomainModels.Person");
+
+                    b.Property<int>("StaffNumber")
+                        .HasColumnType("int");
+
+                    b.ToTable("Teacher");
+                });
+
+            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
+                {
+                    b.HasOne("Domain.DomainModels.Physiotherapist", "Hoofdbehandelaar")
                         .WithMany()
-                        .HasForeignKey("FysiotherapeutEmailadres");
+                        .HasForeignKey("HoofdbehandelaarEmailaddress");
 
-                    b.HasOne("Fysio.Models.Fysiotherapeut", "Hoofdbehandelaar")
+                    b.HasOne("Domain.DomainModels.Physiotherapist", "Physiotherapist")
                         .WithMany()
-                        .HasForeignKey("HoofdbehandelaarEmailadres");
+                        .HasForeignKey("PhysiotherapistEmailaddress");
 
-                    b.HasOne("Fysio.Models.Patient", "Patient")
-                        .WithMany("Patiëntdossier")
-                        .HasForeignKey("PatientEmailadres");
-
-                    b.HasOne("Fysio.Models.Student", "Student")
+                    b.HasOne("Domain.DomainModels.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("StudentEmailadres");
-
-                    b.Navigation("Fysiotherapeut");
+                        .HasForeignKey("StudentEmailaddress");
 
                     b.Navigation("Hoofdbehandelaar");
 
-                    b.Navigation("Patient");
+                    b.Navigation("Physiotherapist");
 
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("Fysio.Models.Docent", b =>
+            modelBuilder.Entity("Domain.DomainModels.Patient", b =>
                 {
-                    b.HasOne("Fysio.Models.Person", null)
+                    b.HasOne("Domain.DomainModels.Person", null)
                         .WithOne()
-                        .HasForeignKey("Fysio.Models.Docent", "Emailadres")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Fysio.Models.Fysiotherapeut", b =>
-                {
-                    b.HasOne("Fysio.Models.Person", null)
-                        .WithOne()
-                        .HasForeignKey("Fysio.Models.Fysiotherapeut", "Emailadres")
+                        .HasForeignKey("Domain.DomainModels.Patient", "Emailaddress")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.HasOne("Fysio.Models.Docent", "docent")
-                        .WithMany()
-                        .HasForeignKey("docentEmailadres");
-
-                    b.HasOne("Fysio.Models.Student", "student")
-                        .WithMany()
-                        .HasForeignKey("studentEmailadres");
-
-                    b.Navigation("docent");
-
-                    b.Navigation("student");
-                });
-
-            modelBuilder.Entity("Fysio.Models.Patient", b =>
-                {
-                    b.HasOne("Fysio.Models.Person", null)
-                        .WithOne()
-                        .HasForeignKey("Fysio.Models.Patient", "Emailadres")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                    b.HasOne("Domain.DomainModels.Patiëntdossier", "Patiëntdossier")
+                        .WithOne("Patient")
+                        .HasForeignKey("Domain.DomainModels.Patient", "Patiëntnumber")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("Fysio.Models.Student", b =>
-                {
-                    b.HasOne("Fysio.Models.Person", null)
-                        .WithOne()
-                        .HasForeignKey("Fysio.Models.Student", "Emailadres")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Fysio.Models.Patient", b =>
-                {
                     b.Navigation("Patiëntdossier");
+                });
+
+            modelBuilder.Entity("Domain.DomainModels.Physiotherapist", b =>
+                {
+                    b.HasOne("Domain.DomainModels.Person", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.DomainModels.Physiotherapist", "Emailaddress")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.DomainModels.Student", b =>
+                {
+                    b.HasOne("Domain.DomainModels.Person", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.DomainModels.Student", "Emailaddress")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.DomainModels.Teacher", b =>
+                {
+                    b.HasOne("Domain.DomainModels.Person", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.DomainModels.Teacher", "Emailaddress")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.DomainModels.Patiëntdossier", b =>
+                {
+                    b.Navigation("Patient");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Domain.DomainModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Fysio.Models
+namespace Presentation.ViewModels
 {
     public class RegisterViewModel
     {

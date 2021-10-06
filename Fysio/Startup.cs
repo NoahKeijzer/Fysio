@@ -1,21 +1,15 @@
 using DataAccess.Data;
-using Fysio.Data;
-using Fysio.DataAccess;
-using Fysio.Models;
+using DataAccess.LocalRepo;
+using DataAccess.SQLRepo;
+using Domain.DomainModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Fysio
+namespace Presentation
 {
     public class Startup
     {
@@ -33,10 +27,10 @@ namespace Fysio
             services.AddScoped<IRepo<Patient>, PatientRepo>();
             services.AddScoped<IRepo<Student>, StudentRepo>();
             services.AddScoped<ISQLRepo<Student>, SQLStudentRepo>();
-            //services.AddScoped<ISQLRepo<Patient>, SQLPatientRepo>();
-            // services.AddScoped<IDao, SQLDao>();
+            services.AddScoped<ISQLRepo<Patient>, SQLPatientRepo>();
+            services.AddScoped<ISQLRepo<Physiotherapist>, SQLPhysiotherapistRepo>();
+            services.AddScoped<ISQLRepo<Teacher>, SQLTeacherRepo>();
             services.AddRazorPages();
-
             services.AddDbContext<FysioDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("Default")));
 
