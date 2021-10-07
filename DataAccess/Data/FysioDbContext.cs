@@ -24,7 +24,8 @@ namespace DataAccess.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);            
+
             modelBuilder.Entity<Physiotherapist>().ToTable("Physiotherapist");
             modelBuilder.Entity<Patient>().ToTable("Patient");
             modelBuilder.Entity<Student>().ToTable("Student");
@@ -33,7 +34,7 @@ namespace DataAccess.Data
             //modelBuilder.Entity<Patiëntdossier>()
             //    .ToTable("Patiëntdossier")
             //    .HasKey(p => p.Patient);
-                    
+
 
             //modelBuilder.Entity<Patient>()
             //    .HasOne(p => p.Patiëntdossier)

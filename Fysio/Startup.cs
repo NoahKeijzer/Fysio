@@ -67,7 +67,15 @@ namespace Presentation
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Register}/{action=Register}/{id?}");
+                    pattern: "{controller=Register}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=PatientDossier}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

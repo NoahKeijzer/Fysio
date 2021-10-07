@@ -1,22 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Register Page";
+    ViewData["Title"] = "Add Patient Dossier";
 }
 
-@model RegisterViewModel
-
+@model PatientDossierViewModel
 
 <form method="post" action="RegisterNewPatient">
     <dasp-action ="Register/RegisterNewPatient" method="post">
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
+        <div class="row">
+            <div class="col">
                 <label for="validationCustom01">First name</label>
                 <input type="text" asp-for="Patient.FirstName" class="form-control" id="validationCustom01" placeholder="First name" value="" required>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col">
                 <label for="validationCustom02">Last name</label>
                 <input type="text" asp-for="Patient.LastName" class="form-control" id="validationCustom02" placeholder="Last name" value="" required>
             </div>
-            <div class="col-md-4 mb-3">
+        </div>
+        <div class="row">
+            <div class="col">
                 <label for="validationCustomUsername">Email Address</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -28,16 +29,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
+            <div class="col">
                 <label for="validationCustom03">Date of Birth</label>
-                <input type="text" asp-for="Patient.DayOfBirth" class="form-control" id="validationCustom03" placeholder="Date of Birth" required>
+                <input type="date" asp-for="Patient.DayOfBirth" class="form-control" id="validationCustom03" placeholder="Date of Birth" required>
                 <div class="invalid-feedback">
                     Please provide a date of birth
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
+        </div>
+        <div class="row">
+            <div class="col">
                 <label for="validationCustom04">Phone Number</label>
                 <input type="number" asp-for="Patient.PhoneNumber" class="form-control" id="validationCustom04" placeholder="Phone Number" required>
                 <div class="invalid-feedback">

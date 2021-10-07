@@ -29,13 +29,13 @@
                 @if (@patient.Patiëntdossier != null)
                 {
                     <td id="c22">
-                        <button class="btn btn-primary">Edit Patient Dossier</button>
+                        <a asp-controller="PatientDossier" asp-action="EditPatientDossier"><button class="btn btn-primary">Edit Patient Dossier</button></a> 
                     </td>
                 }
                 else
                 {
                     <td id="c22">
-                        <button class="btn btn-secondary">Add Patient Dossier</button>
+                        <a asp-controller="PatientDossier" asp-action="AddPatientDossier"><button class="btn btn-primary">Add Patient Dossier</button></a> 
                     </td>
                 }
             </tr>

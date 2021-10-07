@@ -18,7 +18,7 @@ namespace Presentation.Controllers
             _StudentRepo = StudentRepo;
             _PhysiotherapistRepo = PhysiotherapistRepo;
         }
-        public IActionResult Register()
+        public IActionResult Index()
         {
             return View();
         }
