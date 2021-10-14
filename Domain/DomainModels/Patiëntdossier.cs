@@ -9,7 +9,6 @@ namespace Domain.DomainModels
 {
     public class Patiëntdossier
     {
-        [NotMapped]
         public Patient Patient { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -25,7 +24,7 @@ namespace Domain.DomainModels
         public DateTime DatumOntslag { get; set; }
         public string Opmerkingen { get; set; }
         public string Behandelplan { get; set; }
-        public string Behandelingen { get; set; }
+        public Therapy Therapy { get; set; }
 
     }
 }
