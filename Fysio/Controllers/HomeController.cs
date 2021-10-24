@@ -28,12 +28,6 @@ namespace Presentation.Controllers
         {
             return View();
         }
-
-        public IActionResult OverviewPatients()
-        {
-            return View(_PatientRepo.Get());
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -24,13 +24,16 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddScoped<IRepo<Patient>, PatientRepo>();
             services.AddScoped<IRepo<Student>, StudentRepo>();
             services.AddScoped<ISQLRepo<Student>, SQLStudentRepo>();
             services.AddScoped<ISQLRepo<Patient>, SQLPatientRepo>();
             services.AddScoped<ISQLRepo<Physiotherapist>, SQLPhysiotherapistRepo>();
             services.AddScoped<ISQLRepo<Teacher>, SQLTeacherRepo>();
+
             services.AddRazorPages();
+
             services.AddDbContext<FysioDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("Default")));
 
@@ -75,7 +78,7 @@ namespace Presentation
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=PatientDossier}/{action=Index}/{id?}");
+                    pattern: "{controller=Patient}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

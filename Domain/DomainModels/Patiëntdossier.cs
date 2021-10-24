@@ -10,6 +10,7 @@ namespace Domain.DomainModels
     public class Patiëntdossier
     {
         public Patient Patient { get; set; }
+        public string PatientEmail { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

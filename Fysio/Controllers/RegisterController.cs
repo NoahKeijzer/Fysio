@@ -23,7 +23,7 @@ namespace Presentation.Controllers
             return View();
         }
 
-        public IActionResult RegisterBehandeling()
+        public IActionResult RegisterNewPatient()
         {
             return View();
         }

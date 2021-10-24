@@ -2,18 +2,18 @@
     ViewData["Title"] = "Add Patient Dossier";
 }
 
-@model PatientDossierViewModel
+@model Patient
 
 <form method="post" action="RegisterNewPatient">
     <dasp-action ="Register/RegisterNewPatient" method="post">
         <div class="row">
             <div class="col">
                 <label for="validationCustom01">First name</label>
-                <input type="text" asp-for="Patient.FirstName" class="form-control" id="validationCustom01" placeholder="First name" value="" required>
+                <input type="text" asp-for="FirstName" class="form-control" id="validationCustom01" placeholder="First name" value="" required>
             </div>
             <div class="col">
                 <label for="validationCustom02">Last name</label>
-                <input type="text" asp-for="Patient.LastName" class="form-control" id="validationCustom02" placeholder="Last name" value="" required>
+                <input type="text" asp-for="LastName" class="form-control" id="validationCustom02" placeholder="Last name" value="" required>
             </div>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend"></span>
                     </div>
-                    <input type="text" asp-for="Patient.Emailaddress" class="form-control" id="validationCustomUsername" placeholder="Email Address" aria-describedby="inputGroupPrepend" required>
+                    <input type="text" asp-for="Emailaddress" class="form-control" id="validationCustomUsername" placeholder="Email Address" aria-describedby="inputGroupPrepend" required>
                     <div class="invalid-feedback">
                         Please enter a email address.
                     </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="col">
                 <label for="validationCustom03">Date of Birth</label>
-                <input type="date" asp-for="Patient.DayOfBirth" class="form-control" id="validationCustom03" placeholder="Date of Birth" required>
+                <input type="date" asp-for="DayOfBirth" class="form-control" id="validationCustom03" placeholder="Date of Birth" required>
                 <div class="invalid-feedback">
                     Please provide a date of birth
                 </div>
@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col">
                 <label for="validationCustom04">Phone Number</label>
-                <input type="number" asp-for="Patient.PhoneNumber" class="form-control" id="validationCustom04" placeholder="Phone Number" required>
+                <input type="number" asp-for="PhoneNumber" class="form-control" id="validationCustom04" placeholder="Phone Number" required>
                 <div class="invalid-feedback">
                     Please provide a valid PhoneNumber.
                 </div>
@@ -48,12 +48,12 @@
         </div>
         <div class="form-group form-check-inline">
             <label class="form-check-label">
-                <input class="form-radio-input" value="Male" type="radio" asp-for="Patient.Gender" /> Male
+                <input class="form-radio-input" value="Male" type="radio" asp-for="Gender" /> Male
             </label>
         </div>
         <div class="form-group form-check-inline">
             <label class="form-check-label">
-                <input class="form-check-input" value="Female" type="radio" asp-for="Patient.Gender" /> Female
+                <input class="form-check-input" value="Female" type="radio" asp-for="Gender" /> Female
             </label>
         </div>
         <div class="form-group">
