@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<Domain.DomainModels.Patient>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#Patient Number</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">PhoneNumber</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Patient Dossier</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in @Model)
+        {
+            <tr>
+                <td>@patient.Patiëntnumber</td>
+                <td>@patient.FirstName</td>
+                <td>@patient.LastName</td>
+                <td>@patient.Emailaddress</td>
+                <td>@patient.PhoneNumber</td>
+                <td>@patient.Gender</td>
+                @if (@patient.Patiëntdossier != null)
+                {
+                    <td id="c22">
+                      <a asp-route-id="@patient.Patiëntnumber">Register Patient</a> 
+                    </td>
+                }
+                else
+                {
+                    <td id="c22">
+                      <a asp-route-id="@patient.Patiëntnumber" >Add Patient Dossier</a> 
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

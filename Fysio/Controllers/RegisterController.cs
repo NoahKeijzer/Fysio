@@ -9,9 +9,29 @@ namespace Fysio.Controllers
 {
     public class RegisterController : Controller
     {
+<<<<<<< Updated upstream
         public IActionResult Register()
+=======
+        private readonly ISQLRepo<Patient> _PatientRepo;
+        private readonly ISQLRepo<Student> _StudentRepo;
+        private readonly ISQLRepo<Physiotherapist> _PhysiotherapistRepo;
+
+
+        public RegisterController(ISQLRepo<Student> StudentRepo, ISQLRepo<Patient> PatientRepo, ISQLRepo<Physiotherapist> PhysiotherapistRepo)
+        {
+            _PatientRepo = PatientRepo;
+            _StudentRepo = StudentRepo;
+            _PhysiotherapistRepo = PhysiotherapistRepo;
+        }
+        public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult RegisterNewPatient()
+>>>>>>> Stashed changes
+        {
+            return View("RegisterPatient");
         }
         [HttpPost]
         public IActionResult RegisterNewPerson(EmployeeViewModel employeeViewModel)

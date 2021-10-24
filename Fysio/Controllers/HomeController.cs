@@ -26,6 +26,20 @@ namespace Fysio.Controllers
         {
             return View();
         }
+<<<<<<< Updated upstream
+=======
+        [Route("Home/OverviewPatients")]
+        public IActionResult OverviewPatients()
+        {
+            return View(_PatientRepo.Get());
+        }
+
+        [Route("/Home/OverviewPatients/{id}")]
+        public IActionResult OverviewPatients(int id)
+        {
+            return View("~/Views/PatientDossier/AddPatientDossier.cshtml", _PatientRepo.Get(id));
+        }
+>>>>>>> Stashed changes
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
