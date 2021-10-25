@@ -29,13 +29,13 @@
                 @if (@patient.Patiëntdossier != null)
                 {
                     <td id="c22">
-                        <a asp-route-id="@patient.Patiëntnumber"><button class="btn btn-primary">Edit Patient Dossier</button></a> 
+                        <a class="btn btn-primary" asp-route-id="@patient.Patiëntnumber">Edit Patient Dossier</a> 
                     </td>
                 }
                 else
                 {
                     <td id="c22">
-                        <a asp-route-id="@patient.Patiëntnumber"><button class="btn btn-primary">Add Patient Dossier</button></a> 
+                        <a class="btn btn-primary" asp-route-id="@patient.Patiëntnumber">Add Patient Dossier</a> 
                     </td>
                 }
             </tr>

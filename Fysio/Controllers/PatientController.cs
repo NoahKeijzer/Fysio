@@ -20,12 +20,12 @@ namespace Presentation.Controllers
             _PhysiotherapistRepo = PhysiotherapistRepo;
         }
 
-        public IActionResult Index()
+        public IActionResult Overview()
         {
             return View("~/Views/Overview/OverviewPatients.cshtml", _PatientRepo.Get());
         }
 
-        [Route("/Patient/Index/{id}")]
+        [Route("/Patient/Overview/{id}")]
         public IActionResult PatientDossier(int id)
         {
             PatientDossierViewModel.Physiotherapists = _PhysiotherapistRepo.Get();
@@ -37,8 +37,9 @@ namespace Presentation.Controllers
             }
             return View("~/Views/PatientDossier/AddPatientDossier.cshtml", PatientDossierViewModel);
         }
+
         [HttpPost]
-        public IActionResult PatientDossier(PatientDossierViewModel PatientDossierViewModel)
+        public IActionResult CreatePatientDossier(PatientDossierViewModel PatientDossierViewModel)
         {
             _PatientdossierRepo.Create(PatientDossierViewModel.Patiëntdossier);
             PatientDossierViewModel.Patient.Patiëntdossier.PatientEmail = PatientDossierViewModel.Patient.Emailaddress;

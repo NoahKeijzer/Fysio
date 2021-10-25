@@ -4,7 +4,7 @@
 
 @model PatientDossierViewModel
 
-<form method="post" action="PatientDossier">
+<form method="post" action="Patient/CreatePatientDossier">
     <div class="row">
         <div class="col">
             <label for="validationCustom01">First name</label>
@@ -103,6 +103,6 @@
         </div>
     </div>
     <br />
-    <button class="btn btn-primary" type="submit" value="Submit" method="post" action="/PatientDossier">Submit form</button>
+    <button class="btn btn-primary" type="submit" value="Submit" method="post" asp-controller="Patient" action="/CreatePatientDossier">Submit form</button>
 </form>
 
