@@ -16,8 +16,8 @@ namespace Domain.DomainModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Klachten { get; set; }
-        public string DiagnoseCode { get; set; }
-        public string DiagnosOmschrijving { get; set; }
+        public int DiagnoseCode { get; set; }
+        public string DiagnoseOmschrijving { get; set; }
         public string IntakeGedaanDoor { get; set; }
         public string IntakeOnderSupervisieVan { get; set; }
         public Physiotherapist Hoofdbehandelaar { get; set; }

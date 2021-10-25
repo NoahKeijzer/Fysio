@@ -29,6 +29,7 @@ namespace Presentation
             services.AddScoped<IRepo<Student>, StudentRepo>();
             services.AddScoped<ISQLRepo<Student>, SQLStudentRepo>();
             services.AddScoped<ISQLRepo<Patient>, SQLPatientRepo>();
+            services.AddScoped<ISQLRepo<Patiëntdossier>, SQLPatiëntdossierRepo>();
             services.AddScoped<ISQLRepo<Physiotherapist>, SQLPhysiotherapistRepo>();
             services.AddScoped<ISQLRepo<Teacher>, SQLTeacherRepo>();
 

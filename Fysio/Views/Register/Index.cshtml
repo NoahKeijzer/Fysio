@@ -29,8 +29,7 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Apply as a Physiotherapist</h3>
-                    <form method="post" action="RegisterNewPhysiotherapist">
-                        <dasp-action ="Register/RegisterNewPhysiotherapist" method="post">
+                    <form method="post" action="Register/RegisterNewPhysiotherapist">
                             <div asp-validation-summary="All"></div>
                             <div class="row register-form">
                                 <div class="col-md-6">
@@ -46,17 +45,15 @@
                                     <div class="form-group">
                                         <input type="password" asp-for="Physiotherapist.Password" class="form-control" placeholder="Confirm Password *" value="" />
                                     </div>
-                                    <div class="form-group">
-                                        <div class="maxl">
-                                            <label class="radio inline">
-                                                <input type="radio" name="gender" asp-for="Physiotherapist.Gender" value="Male">
-                                                <span> Male </span>
-                                            </label>
-                                            <label class="radio inline">
-                                                <input type="radio" name="gender" asp-for="Physiotherapist.Gender" value="Female">
-                                                <span>Female </span>
-                                            </label>
-                                        </div>
+                                    <div class="form-group form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-radio-input" value="True" type="radio" asp-for="Physiotherapist.Gender" /> Male
+                                        </label>
+                                    </div>
+                                    <div class="form-group form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" value="False" type="radio" asp-for="Physiotherapist.Gender" /> Female
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -79,8 +76,7 @@
                 </div>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <h3 class="register-heading">Apply as a Student</h3>
-                    <form method="post" action="RegisterNewPerson">
-                        <dasp-action ="Register/RegisterNewPerson" method="post">
+                    <form method="post" action="Register/RegisterNewPhysiotherapist" >
                             <div asp-validation-summary="All"></div>
                             <div class="row register-form">
                                 <div class="col-md-6">
@@ -117,7 +113,7 @@
                                     <div class="form-group">
                                         <input type="number" class="form-control" asp-for="Student.Studentnumber" placeholder="Your student number *" value="" />
                                     </div>
-                                    <input type="submit" class="btnRegister" value="Register" method="post" action="/RegisterNewStudent" />
+                                    <input type="submit" class="btnRegister" value="Register" method="post" asp-controller="Register" action="/RegisterNewStudent" />
                                 </div>
                             </div>
                     </form>

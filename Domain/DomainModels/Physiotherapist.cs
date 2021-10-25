@@ -21,5 +21,10 @@ namespace Domain.DomainModels
         {
 
         }
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
     }
 }

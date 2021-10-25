@@ -22,10 +22,9 @@ namespace Presentation.Controllers
         {
             return View();
         }
-
         public IActionResult RegisterNewPatient()
         {
-            return View();
+            return View("RegisterNewPatient");
         }
         [HttpPost]
         public IActionResult RegisterNewStudent(RegisterViewModel registerViewModel)
