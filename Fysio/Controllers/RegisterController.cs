@@ -7,7 +7,7 @@ namespace Presentation.Controllers
 {
     public class RegisterController : Controller
     {
-        // Just to see if things are in sync 
+        // Just to see if things are in sync again
 
         private readonly ISQLRepo<Patient> _PatientRepo;
         private readonly ISQLRepo<Student> _StudentRepo;
